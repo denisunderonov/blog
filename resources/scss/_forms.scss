@@ -1,0 +1,74 @@
+@use 'variables' as *;
+
+// Контейнер формы авторизации
+.auth-form {
+    max-width: 500px;
+    margin: $spacing-xl auto;
+    padding: $spacing-lg;
+    background: white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+
+    &__title {
+        font-size: 2rem;
+        color: $moss-velvet;
+        text-align: center;
+        margin-bottom: $spacing-lg;
+        font-family: $font-heading;
+    }
+}
+
+// Стили формы
+.form {
+    &__group {
+        margin-bottom: $spacing-md;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: $spacing-xs;
+        color: $text-dark;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    &__input {
+        width: 100%;
+        padding: $spacing-sm;
+        border: 2px solid #e0e0e0;
+        border-radius: $radius-sm;
+        font-size: 1rem;
+        font-family: $font-primary;
+        transition: $transition-base;
+        background-color: $cloud-milk;
+
+        &:focus {
+            outline: none;
+            border-color: $accent-sage;
+            background-color: white;
+        }
+
+        &:hover {
+            border-color: #c0c0c0;
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    &__error {
+        display: block;
+        margin-top: $spacing-xs;
+        color: #d32f2f;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        margin-top: $spacing-sm;
+        padding: $spacing-sm $spacing-md;
+        font-size: 1rem;
+    }
+}

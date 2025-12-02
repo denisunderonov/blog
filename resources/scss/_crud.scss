@@ -1,0 +1,228 @@
+// CRUD Forms Styling
+// Стили для форм создания и редактирования статей
+
+.form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--moss-velvet);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.article-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form__group {
+  margin-bottom: 1.5rem;
+}
+
+.form__label {
+  display: block;
+  font-weight: 600;
+  color: var(--moss-velvet);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form__input,
+.form__textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-sage);
+  }
+  
+  &.error {
+    border-color: #e74c3c;
+  }
+}
+
+.form__textarea {
+  min-height: 200px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form__hint {
+  display: block;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.form__error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.form__checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form__checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: var(--accent-sage);
+}
+
+.form__checkbox-label {
+  font-weight: 500;
+  color: var(--moss-velvet);
+  cursor: pointer;
+  user-select: none;
+}
+
+.form__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  
+  &--primary {
+    background-color: var(--accent-sage);
+    color: white;
+    
+    &:hover {
+      background-color: var(--moss-velvet);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 153, 132, 0.3);
+    }
+  }
+  
+  &--secondary {
+    background-color: #95a5a6;
+    color: white;
+    
+    &:hover {
+      background-color: #7f8c8d;
+    }
+  }
+  
+  &--danger {
+    background-color: #e74c3c;
+    color: white;
+    
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
+}
+
+// Опасная зона для удаления
+.form__danger-zone {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+  background-color: #fef5f5;
+}
+
+.form__danger-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+}
+
+.form__danger-text {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+// Кнопки действий на странице просмотра статьи
+.article-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+// Уведомления (success/error messages)
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  
+  &--success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  &--error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 1rem 0.5rem;
+  }
+  
+  .article-form {
+    padding: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+  
+  .form__actions {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  .article-actions {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}

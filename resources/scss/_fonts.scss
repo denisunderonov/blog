@@ -1,0 +1,18 @@
+// Подключение шрифта Ditulum3
+@font-face {
+    font-family: 'Ditulum3';
+    src: url('/fonts/Ditulum3.woff2') format('woff2'),
+         url('/fonts/Ditulum3.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ditulum3';
+    src: url('/fonts/Ditulum3-Bold.woff2') format('woff2'),
+         url('/fonts/Ditulum3-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

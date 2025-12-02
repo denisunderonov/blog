@@ -1,0 +1,103 @@
+@use 'variables' as *;
+
+// Компоненты
+.main-content {
+    flex: 1;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 2rem $spacing-md;
+    width: 100%;
+    
+    @media (max-width: 768px) {
+        padding: 1rem $spacing-sm;
+    }
+}
+
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    width: 100%;
+    
+    @media (max-width: 768px) {
+        padding: 0 1rem;
+    }
+}
+
+// CTA кнопки
+.btn {
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    font-weight: 600;
+    text-align: center;
+    transition: $transition-base;
+    cursor: pointer;
+
+    &--primary {
+        background-color: $accent-sage;
+        color: white;
+        box-shadow: $shadow-sm;
+
+        &:hover {
+            background-color: $accent-sage-hover;
+            transform: translateY(-2px);
+            box-shadow: $shadow-md;
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &--small {
+        display: inline-block;
+        padding: $spacing-xs $spacing-sm;
+        font-size: 0.9rem;
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: $moss-velvet;
+        border: 2px solid $moss-velvet;
+
+        &:hover {
+            background-color: $moss-velvet;
+            color: $cloud-milk;
+        }
+    }
+}
+
+// Карточки
+.card {
+    background-color: white;
+    border-radius: $radius-lg;
+    padding: $spacing-md;
+    box-shadow: $shadow-sm;
+    transition: $transition-base;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-4px);
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: $spacing-sm;
+        color: $moss-velvet;
+        font-family: $font-heading;
+    }
+
+    &__content {
+        color: $text-light;
+        line-height: 1.8;
+    }
+}
+
+// Разделитель
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba($moss-velvet, 0.15), transparent);
+    margin: $spacing-lg 0;
+}

@@ -1,0 +1,37 @@
+// Цветовая схема
+$moss-velvet: #385144;      // Основной темный цвет (header, footer)
+$cloud-milk: #F8F5F2;       // Основной светлый фон
+$moss-light: #4a6556;       // Светлый оттенок moss для hover
+$moss-dark: #2a3d33;        // Темный оттенок moss
+$accent-sage: #7a9984;      // Акцентный цвет для CTA
+$accent-sage-hover: #658972; // Hover для CTA
+$text-dark: #2a3d33;        // Темный текст
+$text-light: #5a6b60;       // Светлый текст
+
+// Типографика
+// Временно используем Comfortaa (похож на Ditulum3), замените на 'Ditulum3' когда добавите файлы шрифта
+$font-primary: 'Comfortaa', 'Ditulum3', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$font-heading: 'Comfortaa', 'Ditulum3', 'Georgia', serif;
+
+// Размеры
+$header-height: 80px;
+$footer-height: 200px;
+$max-width: 1200px;
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+$spacing-xl: 4rem;
+
+// Переходы
+$transition-base: all 0.3s ease;
+
+// Тени
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+// Радиусы
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;

@@ -1,0 +1,183 @@
+@use 'variables' as *;
+
+// Секция комментариев
+.comments-section {
+  max-width: 800px;
+  margin: 3rem auto 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba($moss-velvet, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin: 2rem auto 1rem;
+    border-radius: 0;
+  }
+  
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $moss-velvet;
+    margin-bottom: 2rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    color: rgba($moss-velvet, 0.5);
+    font-size: 1rem;
+    padding: 2rem 0;
+    font-style: italic;
+  }
+}
+
+// Форма комментария
+.comment-form {
+  background: rgba($cloud-milk, 0.5);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $moss-velvet;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__form {
+    .form__textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .btn {
+      margin-top: 1rem;
+    }
+  }
+}
+
+// Список комментариев
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Отдельный комментарий
+.comment {
+  padding: 1.5rem;
+  background: rgba($cloud-milk, 0.3);
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba($cloud-milk, 0.5);
+    box-shadow: 0 2px 8px rgba($moss-velvet, 0.1);
+  }
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  &__author {
+    font-weight: 600;
+    color: $moss-velvet;
+    font-size: 1rem;
+  }
+  
+  &__date {
+    font-size: 0.875rem;
+    color: rgba($moss-velvet, 0.6);
+  }
+  
+  &__content {
+    color: rgba($moss-velvet, 0.85);
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  &__delete-form {
+    display: inline-block;
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    align-items: center;
+  }
+  
+  &__edit-btn {
+    padding: 0.4rem 1rem;
+    background-color: $accent-sage;
+    color: $cloud-milk;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: $moss-velvet;
+    }
+  }
+  
+  &__delete-form {
+    display: inline-block;
+  }
+  
+  &__delete-btn {
+    background: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #c0392b;
+      text-decoration: none;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .comment {
+    padding: 1rem;
+    
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    &__content {
+      font-size: 0.9375rem;
+    }
+  }
+}

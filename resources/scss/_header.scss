@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+// Header стили
+.header {
+    background-color: $moss-velvet;
+    height: $header-height;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: $shadow-md;
+
+    &__container {
+        max-width: $max-width;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 $spacing-md;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; // Логотип слева, навигация справа
+    }
+
+    &__logo-link {
+        display: flex;
+        align-items: center;
+        transition: $transition-base;
+
+        &:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    &__logo {
+        height: 50px;
+        width: auto;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__user {
+        color: $cloud-milk;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+}
