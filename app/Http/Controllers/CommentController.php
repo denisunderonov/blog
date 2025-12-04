@@ -33,11 +33,12 @@ class CommentController extends Controller
             'article_id' => $articleId,
             'user_id' => auth()->id(),
             'content' => $validated['content'],
+            'is_approved' => false,
         ]);
 
         return redirect()
             ->route('articles.show', $article->slug)
-            ->with('success', 'Комментарий добавлен!');
+            ->with('success', 'Комментарий отправлен и ожидает модерации.');
     }
 
 
@@ -82,5 +83,46 @@ class CommentController extends Controller
         return redirect()
             ->route('articles.show', $articleSlug)
             ->with('success', 'Комментарий удалён!');
+    }
+
+    /**
+     * Список комментариев, ожидающих модерации
+     */
+    public function pending()
+    {
+        $this->authorize('viewAny', Comment::class);
+
+        $comments = Comment::with(['user', 'article'])
+            ->where('is_approved', false)
+            ->orderByDesc('created_at')
+            ->paginate(10);
+
+        return view('moderation.comments', compact('comments'));
+    }
+
+    /**
+     * Принять комментарий
+     */
+    public function approve(string $id)
+    {
+        $comment = Comment::findOrFail($id);
+        $this->authorize('update', $comment);
+
+        $comment->update(['is_approved' => true]);
+
+        return back()->with('success', 'Комментарий принят.');
+    }
+
+    /**
+     * Отклонить комментарий
+     */
+    public function decline(string $id)
+    {
+        $comment = Comment::findOrFail($id);
+        $this->authorize('delete', $comment);
+
+        $comment->delete();
+
+        return back()->with('success', 'Комментарий отклонён и удалён.');
     }
 }

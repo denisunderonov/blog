@@ -21,6 +21,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+
+    // Модерация комментариев (только модераторы)
+    Route::get('/moderation/comments', [CommentController::class, 'pending'])->name('comments.pending');
+    Route::patch('/moderation/comments/{id}/approve', [CommentController::class, 'approve'])->name('comments.approve');
+    Route::delete('/moderation/comments/{id}/decline', [CommentController::class, 'decline'])->name('comments.decline');
 });
 
 // Отдельная статья (ВАЖНО: ПОСЛЕ /articles/create и /articles/{id}/edit)

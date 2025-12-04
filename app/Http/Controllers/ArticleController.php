@@ -73,20 +73,11 @@ class ArticleController extends Controller
             'published_at' => $article->published_at,
         ]);
 
-        // Получаем всех модераторов
-        $moderators = \App\Models\User::whereHas('roles', function ($query) {
-            $query->where('name', 'moderator');
-        })->get();
-
-        // Отправляем письмо каждому модератору (ошибки не блокируют сохранение)
-        foreach ($moderators as $moderator) {
-            try {
-                Mail::to($moderator->email)->send(new \App\Mail\NewArticleNotification($article));
-                \Log::info('Email sent to: ' . $moderator->email);
-            } catch (\Exception $e) {
-                \Log::error('Failed to send email to ' . $moderator->email . ': ' . $e->getMessage());
-            }
-        }
+        // Поставить задание отправки писем в очередь
+        \App\Jobs\SendNewArticleNotification::dispatch($article);
+        
+        // Транслировать событие о новой статье (real-time уведомление)
+        event(new \App\Events\NewArticleEvent($article));
         
         // Редирект: если опубликована - на страницу статьи, иначе - на главную
         if ($article->is_published) {
@@ -102,7 +93,9 @@ class ArticleController extends Controller
 
     public function show(string $slug)
     {
-        $article = Article::with(['user', 'comments.user'])
+        $article = Article::with(['user', 'comments' => function ($q) {
+                $q->where('is_approved', true)->with('user')->orderBy('created_at');
+            }])
             ->where('slug', $slug) // Поиск по slug
             ->where('is_published', true) // Только опубликованные статьи
             ->firstOrFail(); // Если не найдено - 404 ошибка

@@ -38,6 +38,10 @@
         </div>
     </header>
 
+    <div id="app">
+        <!-- Vue компонент для уведомлений -->
+    </div>
+
     <main class="main-content">
         @yield('content')
     </main>

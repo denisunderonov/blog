@@ -7,9 +7,15 @@
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
         <h1 class="page-title" style="margin: 0;">Все новости</h1>
         
-        @can('create', App\Models\Article::class)
-            <a href="{{ route('articles.create') }}" class="btn btn--primary">Создать статью</a>
-        @endcan
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            @can('create', App\Models\Article::class)
+                <a href="{{ route('articles.create') }}" class="btn btn--primary">Создать статью</a>
+            @endcan
+
+            @can('viewAny', App\Models\Comment::class)
+                <a href="{{ route('comments.pending') }}" class="btn btn--secondary">Модерация комментариев</a>
+            @endcan
+        </div>
     </div>
 
     @if($articles->count() > 0)
