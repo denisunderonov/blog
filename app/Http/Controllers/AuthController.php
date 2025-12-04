@@ -117,8 +117,8 @@ class AuthController extends Controller
             $user->tokens()->delete();
         }
 
-        // Выход из системы
-        Auth::logout();
+        // Выход из веб-сессии (явно из web-guard, т.к. sanctum-guard не поддерживает logout)
+        Auth::guard('web')->logout();
 
         // Аннулирование сессии
         $request->session()->invalidate();

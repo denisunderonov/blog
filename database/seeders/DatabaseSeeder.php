@@ -33,9 +33,16 @@ class DatabaseSeeder extends Seeder
         foreach ($users as $user) {
             $user->roles()->attach($readerRole);
         }
+
+        // Назначаем роль модератора существующему пользователю по email (если найден)
+        $targetEmail = 'denisunderonov2@gmail.com';
+        $existingUser = User::where('email', $targetEmail)->first();
+        if ($existingUser) {
+            $existingUser->roles()->syncWithoutDetaching([$moderatorRole->id]);
+        }
         
         // Добавляем модератора в массив пользователей для создания контента
-        $allUsers = $users->push($moderator);
+    $allUsers = $users->push($moderator);
         
         // Потом создаём 50 статей, случайно распределяя их между авторами
         $articles = Article::factory(50)->recycle($allUsers)->create();
